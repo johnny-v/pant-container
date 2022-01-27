@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'web_view_container.dart';
 
 class Home extends StatelessWidget {
-  final _links = ['https://cfd2.staging.sgmarkets.com/fortune-web-server/static/fortune-login/index.html'];
+  final _links = [
+    'https://cfd2.staging.sgmarkets.com/fortune-web-server/static/fortune-login/index.html',
+    'https://cfd2.staging.sgmarkets.com/fortune-web-server/static/fortune-login/mobilelogin.html',
+    'https://accounts.google.com/signin/v2/identifier?flowName=GlifWebSignIn&flowEntry=ServiceLogin',
+    'https://cfdapp.comdirect.de/lp/cfdapp/login'
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
