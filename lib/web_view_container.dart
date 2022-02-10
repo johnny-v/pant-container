@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:url_launcher/link.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class WebViewContainer extends StatefulWidget {
   final url;
@@ -19,9 +21,16 @@ class _WebViewContainerState extends State<WebViewContainer> {
               return WebView(
                 initialUrl: _url,
                 javascriptMode: JavascriptMode.unrestricted,
-                navigationDelegate: (NavigationRequest request) {
+                navigationDelegate: (NavigationRequest request) async {
                   print('allowing navigation to $request');
-                  return NavigationDecision.navigate;
+                  if (request.url.contains('documents')) {
+                    await launch(request.url);
+
+                    return NavigationDecision.prevent;
+                  } else {
+                    return NavigationDecision.navigate;
+                  }
+
                 },
                 onPageStarted: (String url) {
                   print('Page started loading: $url');
