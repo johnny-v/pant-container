@@ -23,7 +23,7 @@ class _WebViewContainerState extends State<WebViewContainer> {
                 javascriptMode: JavascriptMode.unrestricted,
                 navigationDelegate: (NavigationRequest request) async {
                   print('allowing navigation to $request');
-                  if (request.url.contains('documents')) {
+                  if (request.url.contains('documents') || request.url.contains('pdf')) {
                     await launch(request.url);
 
                     return NavigationDecision.prevent;
